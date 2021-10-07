@@ -27,7 +27,8 @@
 #include "../include/VDP_PRINT.h"
 #include "../include/unRLEWBtoVRAM.h"
 
-#include "../include/AY38910BF.h"
+#include "../include/AY38910BF_S.h"
+
 #include "../include/ayFXplayer.h"
 #include "../include/ayFX_data.h"
 
@@ -129,7 +130,6 @@ void main(void)
   
   ayFX_Setup((unsigned int) BANK00, ayFX_FIXED ,AY_Channel_C); // Initialize the ayFXplayer
     
-  NoteTable = (unsigned int) NT;
   Player_Init();  // Initialize the PT3player
   
   POKE(LINL32,32); //Width(32)
@@ -163,7 +163,7 @@ void main(void)
   ShowChannel();
   ShowAYtype();
  
-  Player_InitSong((unsigned int) SONG01, ON);
+  Player_InitSong((unsigned int) SONG01, (unsigned int) NT2, ON);
   
   VPRINT(1,4,"Name  :");
   VPRINTN(8,4,SONG01_name,23);

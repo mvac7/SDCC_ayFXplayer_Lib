@@ -24,7 +24,7 @@
 #include "../include/VDP_PRINT.h"
 #include "../include/unRLEWBtoVRAM.h"
 
-#include "../include/AY38910BF.h"
+#include "../include/AY38910BF_S.h"
 #include "../include/ayFXplayer.h"
 #include "../include/ayFX_data.h"
 
