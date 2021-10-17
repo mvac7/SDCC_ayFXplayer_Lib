@@ -18,9 +18,9 @@ In examples/test_ROM software, PT3 songs:
 
 ## Description
 
-This project is an opensource library to launch sound effects for the PSG AY-3-8910 or compatible. 
+Library for launch sound effects for the PSG AY-3-8910 or compatible.  
 
-It is an adaptation of ayFX REPLAYER Fixed Volume v1.31 made by SapphiRe. http://www.z80st.es/blog/tags/ayfx
+It is an adaptation of [ayFX REPLAYER](http://www.z80st.es/blog/tags/ayfx) Fixed Volume v1.31 made by SapphiRe.
 
 The names of the functions have been changed to adapt it to the nomenclature of the sound libraries of the fR3eL project.
 
@@ -28,19 +28,25 @@ To function it requires the AY38910BF library. The function that dumps the regis
 has been moved to AY38910BF library because it is applicable to other music libraries (such as PT3player).
 You also get the possibility of selecting to which sound processor the data processed by the players should be directed (internal or external AY).
 
-The [`AY38910BF`](https://github.com/mvac7/SDCC_AY38910BF_Lib), [`PT3player`](https://github.com/mvac7/SDCC_AY38910BF_Lib) and `ayFXplayer` libraries are designed to work together, so you will have a system to provide music and effects in game development.
+Use them for developing MSX applications using Small Device C Compiler (SDCC).
 
-![AY Sound System](https://raw.githubusercontent.com/mvac7/SDCC_AY38910BF_Lib/master/doc/AYlibs.png)
+This project is an Open Source library. 
+You can add part or all of this code in your application development or include it in other libraries/engines.
 
-In the source code (\examples), you can find applications for testing and learning purposes.
+You can access the documentation here with [`How to use the library`](docs/HOWTO.md).
 
-![TEST AYfxplayer](https://raw.githubusercontent.com/mvac7/SDCC_ayFXplayer/master/examples/test02_ayFX_PT3/GFX/TESTFX2.png)
+In the source code [`examples/`](examples/), you can find applications for testing and learning purposes.
+
+![TEST AYfxplayer](examples/test02_ayFX_PT3/GFX/TESTFX2.png)
 
 This library is part of the [`MSX fR3eL Project`](https://github.com/mvac7/SDCC_MSX_fR3eL).
 
 Enjoy it!                           
 
 
+<br/>
+
+---
 
 ## Features
 
@@ -54,19 +60,25 @@ Enjoy it!
 
 
 
+<br/>
+
+---
 
 ## History of versions
 
 - v1.0 (7 July 2021) First SDCC version.
 
 
+<br/>
+
+---
 
 ## Requirements
 
 ### For compile:
 
-- Small Device C Compiler (SDCC) v4.1 http://sdcc.sourceforge.net/
-- Hex2bin v2.5 http://hex2bin.sourceforge.net/
+- [Small Device C Compiler (SDCC) v4.1](http://sdcc.sourceforge.net/)
+- [Hex2bin v2.5](http://hex2bin.sourceforge.net/)
 - [PSG AY-3-8910 BF MSX SDCC Library](https://github.com/mvac7/SDCC_AY38910BF_Lib)
 
 
@@ -75,31 +87,17 @@ Enjoy it!
 - [AY Sound FX Editor](https://shiru.untergrund.net/software.shtml) by Shiru
 - [AY Sound FX Editor (Improved)](https://github.com/Threetwosevensixseven/ayfxedit-improved) by Shiru and Robin Verhagen-Guest
 
-
+<br/>
 
 ---
 
-## Definitions
+## AY Sound System
 
-### ayFX Operating modes
+The [`AY38910BF`](https://github.com/mvac7/SDCC_AY38910BF_Lib), [`PT3player`](https://github.com/mvac7/SDCC_AY38910BF_Lib) and [`ayFXplayer`](https://github.com/mvac7/SDCC_ayFXplayer) libraries are designed to work together, so you will have a system to provide music and effects in game development.
 
-This parameter can be changed from the `ayFX_Setup` function or directly by writing in the static variable `ayFX_MODE`. 
+![AY Sound System](https://raw.githubusercontent.com/mvac7/SDCC_AY38910BF_Lib/master/docs/AYlibs.png)
 
-Label | Value
--- | -- 
-ayFX_FIXED | 0
-ayFX_CYCLE | 1
-
-
-  
-## Functions
-
-- `ayFX_Setup(unsigned int BANKaddr, char mode, char channel)` ayFX player setup
-- `ayFX_SetChannel(char channel)` Change output channel (useful only in Fixed channel mode)
-- `char ayFX_Play(char FXnumber, char FXpriority)` Play FX
-- `ayFX_Decode()` Generates the values of registers of a frame of the ayFX in progress. It has to be executed in every frame, not necessarily in the interrupt routine.
-
-
+<br/>
 
 ---
 

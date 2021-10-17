@@ -3,7 +3,7 @@
   Version: 1.0 (25/6/2021)
   Author: mvac7
   Architecture: MSX
-  Format: C Object (SDCC .rel)
+  Format: ROM
   Programming language: C and Z80 assembler
   
   PT3 song:
