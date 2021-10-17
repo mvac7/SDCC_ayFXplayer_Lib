@@ -55,7 +55,7 @@ Enjoy it!
 - Priority parameter. The effects with the highest priority will be executed on the ones with the lowest.
 - 2 modes of operation:
    1) Fixed. They will be heard on the indicated channel.
-   2) Cyclical. The ayFX sample will be mixed on a different PSG channel in each frame.
+   1) Cyclical. The ayFX sample will be mixed on a different PSG channel in each frame.
 
 
 
@@ -102,7 +102,9 @@ Label      | Value
 ayFX_FIXED | 0
 ayFX_CYCLE | 1
 
+<br/>
 
+---
   
 ## 6 Functions
 
