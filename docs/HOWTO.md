@@ -54,8 +54,8 @@ Enjoy it!
 - Up to 256 effects per bank. Multiple banks can be defined and changed from the initialization function.
 - Priority parameter. The effects with the highest priority will be executed on the ones with the lowest.
 - 2 modes of operation:
-   - 1. Fixed. They will be heard on the indicated channel.
-   - 2. Cyclical. The ayFX sample will be mixed on a different PSG channel in each frame.
+   - Fixed. They will be heard on the indicated channel.
+   - Cyclical. The ayFX sample will be mixed on a different PSG channel in each frame.
 
 
 
