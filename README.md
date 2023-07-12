@@ -66,6 +66,7 @@ Enjoy it!
 
 ## History of versions
 
+- v1.1 (12 July 2023) Bug fix (thanks to [@ericb59](https://github.com/ericb59) ) 
 - v1.0 (7 July 2021) First SDCC version.
 
 
