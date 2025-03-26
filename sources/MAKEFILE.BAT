@@ -4,5 +4,5 @@ echo MAKEDIR build
 md build
 :NEXTSTEP1
 echo Compiling Object
-sdcc -mz80 -c -o build\  src\ayFXplayer.c
+sdcc -mz80 -c -o build\  src\PSG_ayFXplayer.c
 pause

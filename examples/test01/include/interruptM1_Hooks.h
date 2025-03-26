@@ -1,34 +1,27 @@
 /* =============================================================================
-  SDCC Z80 interrupt M1 Hooks MSX SDCC Library (fR3eL Project)
-  Version: 1.1 (4 July 2021)
-  Author: mvac7
-  Architecture: MSX
-  Format: C Object (SDCC .rel)
-  Programming language: C and Z80 assembler
-
-  Description:
-    Functions to control over the hooks (TIMI and KEYI) used in the ISR of the 
-    M1 interrupt included in the MSX system (BIOS/MSX-DOS).    
-  
-  History of versions:
-   - v1.1 (4 July 2021)
-   - v1.0 (4 July 2011) Published in Avelino Herrera's WEB 
-                        http://msx.avelinoherrera.com/index_es.html#sdccmsx
+Z80 interrupt M1 Hooks MSX SDCC Library (fR3eL Project)
+Library with basic functions to control the MSX system hooks called from the 
+Z80 Mode 1 interrupt ISR (Interrupt Service Routine).  
+https://github.com/mvac7/SDCC_MSX_fR3eL
 ============================================================================= */
 
-#ifndef  __INTERRUPT_H__
-#define  __INTERRUPT_H__
+#ifndef  __INTERRUPT_M1_HOOKS_H__
+#define  __INTERRUPT_M1_HOOKS_H__
 
 
+#ifndef _Z80interruptDefs_
+#define _Z80interruptDefs_
 
-#define  DI               __asm di __endasm
-#define  EI               __asm ei __endasm
-
-#define  PUSH_AF          __asm push AF __endasm
-#define  POP_AF           __asm pop  AF __endasm
+#define  DisableI         __asm di __endasm
+#define  EnableI          __asm ei __endasm
 
 #define  HALT             __asm halt __endasm
 
+#endif
+
+
+#define  PUSH_AF          __asm push AF __endasm
+#define  POP_AF           __asm pop  AF __endasm
 
 
 
@@ -36,11 +29,11 @@
 /* =============================================================================
  Save_TIMI
 
- Function : Save TIME hook vector
+ Function : Save TIMI hook vector
  Input    : -
  Output   : -
 ============================================================================= */
-void Save_TIMI();
+void Save_TIMI(void);
 
 
 
@@ -51,7 +44,7 @@ void Save_TIMI();
  Input    : Function address
  Output   : -
 ============================================================================= */
-void Install_TIMI(void (*isr)(void));
+void Install_TIMI(void (*func)(void));
 
 
 
@@ -62,7 +55,7 @@ void Install_TIMI(void (*isr)(void));
  Input    : -
  Output   : -
 ============================================================================= */
-void Restore_TIMI();
+void Restore_TIMI(void);
 
 
 
@@ -73,7 +66,7 @@ void Restore_TIMI();
  Input    : -
  Output   : -
 ============================================================================= */
-void Disable_TIMI();
+void Disable_TIMI(void);
 
 
 
@@ -84,7 +77,7 @@ void Disable_TIMI();
  Input    : -
  Output   : -
 ============================================================================= */
-void Save_KEYI();
+void Save_KEYI(void);
 
 
 
@@ -95,7 +88,7 @@ void Save_KEYI();
  Input    : Function address
  Output   : -
 ============================================================================= */
-void Install_KEYI(void (*isr)(void));
+void Install_KEYI(void (*func)(void));
 
 
 
@@ -106,7 +99,7 @@ void Install_KEYI(void (*isr)(void));
  Input    : -
  Output   : -
 ============================================================================= */
-void Restore_KEYI();
+void Restore_KEYI(void);
 
 
 
@@ -117,7 +110,8 @@ void Restore_KEYI();
  Input    : -
  Output   : -
 ============================================================================= */
-void Disable_KEYI();
+void Disable_KEYI(void);
+
 
 
 

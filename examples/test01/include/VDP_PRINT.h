@@ -1,98 +1,99 @@
 /* =============================================================================
-  VDP PRINT MSX SDCC Library (fR3eL Project)
-
-  Description:
-     Functions Library for display text strings in the graphic modes of the 
-     TMS9918A (G1 and G2).   
+VDP PRINT MSX SDCC Library (fR3eL Project)
+Functions for display text strings in the graphic modes of the TMS9918A(G1 & G2)
+https://github.com/mvac7/SDCC_MSX_fR3eL
 ============================================================================= */
 #ifndef __VPRINT_H__
 #define __VPRINT_H__
 
 
+extern char VPRINT_ntext[6];
+extern unsigned int VPRINT_vaddr;
+
+
 
 /* =============================================================================
- It provides the address of the video memory map tiles, from the screen position
- indicated.
- 
- Inputs:
-   column (byte) 0 - 31
-   line (byte) 0 - 23
+  VLOCATE
+  
+  Description:
+    Moves the cursor to the specified location and optionally 
+    provides the VRAM address from the pattern name table, 
+    for the indicated screen position.
+  
+  Inputs:
+    column (char) 0 - 31 (G1 or G2 modes) 0-39 (Text mode)
+    line   (char) 0 - 23
+    
+  Outputs: -
 ============================================================================= */
-unsigned int GetVRAMaddressByPosition(char column, char line);
+void VLOCATE(char column, char line);
+
+
+
+
+unsigned int GetStringLength(char* text);
+
 
 
 
 /* =============================================================================
- Prints a string at the indicated screen position
- 
+  VPRINT
+  
+  Description:
+    Prints a string of characters on the screen.
+    Places it in the position indicated by VLOCATE or in the last printed position.
+    
  Inputs:
-   column (byte) 0 - 31
-   line (byte) 0 - 23
-   text (char*) string
+    [char*] string 
 ============================================================================= */
-void VPRINT(char column, char line, char* text);
+void VPRINT(char* text);
 
 
 
 /* =============================================================================
- Prints a string at the indicated screen position
- 
- Inputs:
-   column (byte) 0 - 31
-   line (byte) 0 - 23
-   text (char*) string
-   length (uint) length of the string to print
-============================================================================= */
-void VPRINTN(char column, char line, char* text, unsigned int length);
+  VPRINTN
 
-
-
-/* =============================================================================
- Dump the contents of an array of char in a position shown in the video memory
+  Description:
+    Prints a character string with a limited length on the screen.
 
  Inputs:
-   vaddress (uint) 
-   text (char*) array
+    text (char*) string
+    length (unsigned int) length of the string to print
 ============================================================================= */
-void VPrintString(unsigned int vaddress, char* text);
+void VPRINTN(char* text, unsigned int length);
 
 
 
 /* =============================================================================
-   VPrintNumber
-   Prints a number at the specified position on the screen.
+  VPrintNumber
+  
+  Description:
+    Prints a number.
    
-   Inputs:
-     [char] column 0 - 31
-     [char] line   0 - 23
-     [unsigned int] number
-     [char] length
+  Inputs:
+    [unsigned int] number
+    [char] length
 ============================================================================= */
-void VPrintNumber(char column, char line, unsigned int value, char length);
+void VPrintNumber(unsigned int value);
+
+
+
+void VPrintFNumber(unsigned int value, char emptyChar, char length);
 
 
 
 /* =============================================================================
-   VPrintNum
-   Prints a number at the specified position on the screen.
-   
-   Inputs:
-     [unsigned int] VRAM address in Pattern Name Table.
-     [unsigned int] number
-     [char] length
+  num2Dec16
+
+  16-bit Integer to ASCII (decimal)
+  original code by baze http://baze.sk/3sc/misc/z80bits.html#5.1
+  (update) Add functionality to replace leading zeros by spaces.  
+  
+  Inputs:
+    - value (unsigned int)  
+    - *address (unsigned int) pointer to the string where the number is to be translated 
 ============================================================================= */
-void VPrintNum(unsigned int vaddr, unsigned int value, char length);
-
-
-
-/* =============================================================================
- 16-bit Integer to ASCII (decimal)
- original code by baze http://baze.sk/3sc/misc/z80bits.html#5.1
- (update) Add functionality to replace leading zeros by spaces.  
- Input: HL = number to convert, DE = location of ASCII string
- Output: ASCII string at (DE)
-============================================================================= */
-void num2Dec16(unsigned int aNumber, char *address);
+void num2Dec16(unsigned int aNumber, unsigned int variables);
 
 
 
